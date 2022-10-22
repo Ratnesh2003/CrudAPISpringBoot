@@ -25,8 +25,8 @@ public class StudentController {
         return student;
     }
 
-    @GetMapping("/student")
-    public Optional<Student> getStudent(@RequestParam(name = "roll") int roll) {
+    @GetMapping("/student/{roll}")
+    public Optional<Student> getStudent(@PathVariable("roll") int roll) {
         return repo.findById(roll);
     }
 
@@ -36,8 +36,8 @@ public class StudentController {
         return student;
     }
 
-    @DeleteMapping("/student")
-    public List<Student> deleteStudent(@RequestParam(name = "roll") int roll) {
+    @DeleteMapping("/student/{roll}")
+    public List<Student> deleteStudent(@PathVariable("roll") int roll) {
         Student deleteStudent = repo.getReferenceById(roll);
         repo.delete(deleteStudent);
         return repo.findAll();
