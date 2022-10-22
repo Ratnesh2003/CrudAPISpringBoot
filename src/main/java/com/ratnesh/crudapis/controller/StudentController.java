@@ -20,7 +20,7 @@ public class StudentController {
     }
 
     @PostMapping("/student")
-    public Student addStudent(Student student) {
+    public Student addStudent(@RequestBody Student student) {
         repo.save(student);
         return student;
     }
@@ -31,15 +31,14 @@ public class StudentController {
     }
 
     @PutMapping("/student")
-    public Student updateStudent(Student student) {
+    public Student updateStudent(@RequestBody Student student) {
         repo.save(student);
         return student;
     }
 
     @DeleteMapping("/student/{roll}")
     public List<Student> deleteStudent(@PathVariable("roll") int roll) {
-        Student deleteStudent = repo.getReferenceById(roll);
-        repo.delete(deleteStudent);
+        repo.deleteById(roll);
         return repo.findAll();
     }
 }
